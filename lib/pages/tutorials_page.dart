@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:simple_msf_course/models/pillar.dart';
 import 'package:simple_msf_course/state/piller_widget.dart';
 import 'package:simple_msf_course/widgets/tutorial_widget.dart';
 
@@ -15,7 +14,7 @@ class TutorialsPage extends StatefulWidget {
 class _TutorialsPageState extends State<TutorialsPage> {
   @override
   Widget build(BuildContext context) {
-    final pillar = PillarWidget.of(context);
+    final pillar = PillarInheritedWidget.of(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -25,7 +24,7 @@ class _TutorialsPageState extends State<TutorialsPage> {
         Padding(
           padding: const EdgeInsets.only(top: 24.0),
           child: Text(
-            'Total Tutorials: ${pillar!.pillarData.articleCount}',
+            'Total Tutorials: ${pillar.articleCount}',
             style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),
         )

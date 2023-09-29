@@ -26,7 +26,7 @@ class _ApplicationState extends State<Application> {
         appBar: AppBar(
           title: const Text('Tutorial Tracker'),
         ),
-        body: PillarWidget(
+        body: PillarStatefulWidget(
           pillarData: pillarData,
           child: const TutorialsPage(),
         ),

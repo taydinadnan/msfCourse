@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:simple_msf_course/models/pillar.dart';
 import 'package:simple_msf_course/state/piller_widget.dart';
 
 class TutorialWidget extends StatefulWidget {
@@ -12,23 +11,21 @@ class TutorialWidget extends StatefulWidget {
 class _TutorialWidgetState extends State<TutorialWidget> {
   @override
   Widget build(BuildContext context) {
-    final pillar = PillarWidget.of(context);
+    final pillar = PillarInheritedWidget.of(context);
     return Stack(
       children: [
         InkWell(
           onTap: () {
-            pillar.pillarData.increaseArticleCount();
+            pillar.increaseArticleCount();
           },
-          child: Image.asset(
-              'assets/images/${pillar!.pillarData.type.imageName}',
-              width: 110,
-              height: 110),
+          child: Image.asset('assets/images/${pillar.imageName}',
+              width: 110, height: 110),
         ),
         Positioned(
           bottom: 2,
           child: CircleAvatar(
             backgroundColor: Colors.blue,
-            child: Text(pillar.pillarData.articleCount.toString()),
+            child: Text(pillar.articleCount.toString()),
           ),
         )
       ],
