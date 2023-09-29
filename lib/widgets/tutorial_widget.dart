@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:simple_msf_course/models/pillar.dart';
+import 'package:simple_msf_course/state/piller_widget.dart';
 
 class TutorialWidget extends StatefulWidget {
-  final Pillar pillar;
-  const TutorialWidget({super.key, required this.pillar});
+  const TutorialWidget({super.key});
 
   @override
   State<TutorialWidget> createState() => _TutorialWidgetState();
@@ -12,20 +12,23 @@ class TutorialWidget extends StatefulWidget {
 class _TutorialWidgetState extends State<TutorialWidget> {
   @override
   Widget build(BuildContext context) {
+    final pillar = PillarWidget.of(context);
     return Stack(
       children: [
         InkWell(
           onTap: () {
-            widget.pillar.increaseArticleCount();
+            pillar.pillarData.increaseArticleCount();
           },
-          child: Image.asset('assets/images/${widget.pillar.type.imageName}',
-              width: 110, height: 110),
+          child: Image.asset(
+              'assets/images/${pillar!.pillarData.type.imageName}',
+              width: 110,
+              height: 110),
         ),
         Positioned(
           bottom: 2,
           child: CircleAvatar(
             backgroundColor: Colors.blue,
-            child: Text(widget.pillar.articleCount.toString()),
+            child: Text(pillar.pillarData.articleCount.toString()),
           ),
         )
       ],
